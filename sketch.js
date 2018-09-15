@@ -19,13 +19,13 @@ var grid = [];
 var current;
 
 var stack = [];
-let stackArchive = []
+var stackArchive = [];
 
 function setup() {
   createCanvas(300, 300);
   cols = floor(width/w);
   rows = floor(height/w);
-  //frameRate(5);
+  // frameRate(5);
 
   for (var   j = 0; j < rows; j++) {
     for (var i = 0; i < cols; i++) {
@@ -59,10 +59,7 @@ function draw() {
     // STEP 4
     current = next;
   } else if (stack.length > 0) {
-    console.log(stackArchive.length, stack.length)
-    if (stackArchive.length < stack.length) {
-      stackArchive = stack
-    }
+    stackArchive = stackArchive.length < stack.length ? stack.slice() : stackArchive
     current = stack.pop()
   }
 }
