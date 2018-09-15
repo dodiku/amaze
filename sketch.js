@@ -12,17 +12,18 @@
 // Recursive backtracker
 // https://en.wikipedia.org/wiki/Maze_generation_algorithm
 
-var cols, rows;
-var w = 18;
-var grid = [];
+const numberOfRows = 8
+const canvasSize = 400 // in pixels
+const w = Math.floor(canvasSize/numberOfRows) - (canvasSize/100) // cell size
 
-var current;
-
-var stack = [];
-var stackArchive = [];
+let cols, rows;
+let current;
+let grid = [];
+let stack = [];
+let stackArchive = [];
 
 function setup() {
-  createCanvas(300, 300);
+  createCanvas(canvasSize, canvasSize);
   cols = floor(width/w);
   rows = floor(height/w);
   // frameRate(5);
