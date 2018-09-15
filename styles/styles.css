@@ -1,0 +1,28 @@
+html {
+  background-color: chartreuse;
+  text-align: center;
+}
+
+body {
+  padding: 20px;
+  margin: 0;
+}
+
+canvas {
+  vertical-align: top;
+}
+
+.morse {
+  background-color: darkgoldenrod;
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  display: inline-block;
+  padding: 1em;
+  margin-top: 2em;
+}
+
+#canvas_container {
+  margin-top: 2em;
+  display: inline-block;
+}

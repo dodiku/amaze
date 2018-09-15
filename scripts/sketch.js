@@ -25,7 +25,8 @@ let stack = []
 let stackArchive = []
 
 function setup() {
-  createCanvas(canvasSize, canvasSize)
+  let canvas = createCanvas(canvasSize, canvasSize)
+  canvas.parent('canvas_container')
   cols = floor(width / w)
   rows = floor(height / w)
   // frameRate(5);
