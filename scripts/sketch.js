@@ -65,10 +65,11 @@ function draw() {
     current = next
   } else if (stack.length > 0) {
     stackArchive =
-      stackArchive.length < stack.length ? stack.slice() : stackArchive
+      stackArchive.length <= stack.length ? stack.slice() : stackArchive
     current = stack.pop()
   } else {
     // changing the color of the
+    // stackArchive.push(current)
     highlightPath(stackArchive, letters)
   }
 }
@@ -99,9 +100,9 @@ function removeWalls(a, b) {
   }
 }
 
-const highlightPath = (highlightStach, letters) => {
+const highlightPath = (highlightStack, letters) => {
   grid.forEach(square => {
-    if (highlightStach.includes(square) && square.morse === -1) {
+    if (highlightStack.includes(square) && square.morse === -1) {
       square.morse = letters[Math.floor(Math.random() * letters.length)]
     }
   })

@@ -76,7 +76,7 @@ function Cell(i, j) {
 
     if (this.morse != -1) {
       noStroke()
-      fill(255, 0, 255, 100)
+      fill(250, 150, 243, 200)
       rect(
         x + padding,
         y + padding,
@@ -84,12 +84,13 @@ function Cell(i, j) {
         w - padding * 2,
         padding * 5
       )
+      textFont('Georgia')
       fill(0, 0, 0)
       textSize(14)
       text(this.morse, x + w / 2 - padding, y + w / 2 + padding)
     } else if (this.visited) {
       noStroke()
-      fill(255, 0, 255, 20)
+      fill(250, 150, 243, 50)
       rect(
         x + padding,
         y + padding,
