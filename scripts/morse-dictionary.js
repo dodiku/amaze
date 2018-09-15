@@ -69,6 +69,3 @@ const englishToMorse = {
   'y': '-.--',
   'z': '--..',
 };
-
-exports.morseToEnglish = morseToEnglish;
-exports.englishToMorse = englishToMorse;
