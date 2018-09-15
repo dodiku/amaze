@@ -12,7 +12,8 @@
 // Recursive backtracker
 // https://en.wikipedia.org/wiki/Maze_generation_algorithm
 
-const letters = 'berry'
+const level = 1
+const letters = levelWords[level]
 const numberOfRows = 5
 const canvasSize = 280 // in pixels
 const w = Math.floor(canvasSize / numberOfRows) - canvasSize / 100 // cell size
@@ -101,7 +102,6 @@ function removeWalls(a, b) {
 }
 
 const highlightPath = (highlightStack, letters) => {
-  const lettersArray = letters.toUpperCase().split('')
   const interval = Math.floor(highlightStack.length / letters.length)
   let count = 0
   highlightStack.forEach(square => {
