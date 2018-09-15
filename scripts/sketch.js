@@ -23,6 +23,7 @@ let current
 let grid = []
 let stack = []
 let stackArchive = []
+let stackArchivePosition = 1
 
 function setup() {
   let canvas = createCanvas(canvasSize, canvasSize)
