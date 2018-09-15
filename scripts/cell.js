@@ -18,6 +18,7 @@ function Cell(i, j) {
   this.walls = [true, true, true, true] // top , right , bottom , left
   this.visited = false
   this.morse = -1
+  this.solved = false
 
   this.checkNeighbors = function() {
     var neighbors = []

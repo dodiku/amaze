@@ -14,8 +14,8 @@
 
 const letters = ['E', 'I']
 
-const numberOfRows = 8
-const canvasSize = 400 // in pixels
+const numberOfRows = 5
+const canvasSize = 280 // in pixels
 const w = Math.floor(canvasSize / numberOfRows) - canvasSize / 100 // cell size
 
 let cols, rows

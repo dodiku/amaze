@@ -1,6 +1,7 @@
 html {
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -10,16 +11,24 @@ body {
 
 canvas {
   vertical-align: top;
+  box-shadow: 4px 4px 12px #afafaf;
+}
+
+.container {
+  padding-top: 1em;
 }
 
 .morse {
-  background-color: darkgoldenrod;
-  height: 100px;
-  width: 100px;
+  /* background-color: darkgoldenrod; */
+  height: 280px;
+  width: 280px;
   margin: auto;
   display: inline-block;
-  padding: 1em;
+  vertical-align: top;
   margin-top: 2em;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
 }
 
 #canvas_container {
