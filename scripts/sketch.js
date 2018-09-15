@@ -106,7 +106,7 @@ const highlightPath = (highlightStack, letters) => {
   let count = 0
   highlightStack.forEach(square => {
     const index = grid.indexOf(square)
-    if (index > -1) {
+    if (index > 0) {
       grid[index].path = true
       if (grid[index].letter === -1 && count % interval == 0) {
         grid[index].letter =
