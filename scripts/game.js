@@ -1,18 +1,19 @@
 // var idleTime = 0;
 
 function keyTyped() {
-    if (key) {
-      // window.clearTimeout();
-      // startIdleTimer();
-      if (stackArchivePosition < stackArchive.length) {
-        let next = stackArchive[stackArchivePosition];
-        if (key.toLowerCase() === next.morse.toLowerCase()) {
-          current = grid[index(next.i, next.j)];
-          stackArchivePosition += 1;
-          // window.setTimeout(showHint(), 3000);
-        }
+  if (key) {
+    // window.clearTimeout();
+    // startIdleTimer();
+    if (stackArchivePosition < stackArchive.length) {
+      let next = stackArchive[stackArchivePosition]
+      console.log('-->', next)
+      if (key.toLowerCase() === next.letter.toLowerCase()) {
+        current = grid[index(next.i, next.j)]
+        stackArchivePosition += 1
+        // window.setTimeout(showHint(), 3000);
       }
     }
+  }
 }
 
 // function showHint() {

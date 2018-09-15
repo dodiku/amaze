@@ -12,8 +12,7 @@
 // Recursive backtracker
 // https://en.wikipedia.org/wiki/Maze_generation_algorithm
 
-const letters = ['E', 'I']
-
+const letters = 'berry'
 const numberOfRows = 5
 const canvasSize = 280 // in pixels
 const w = Math.floor(canvasSize / numberOfRows) - canvasSize / 100 // cell size
@@ -49,6 +48,7 @@ function draw() {
 
   current.visited = true
   current.highlight()
+
   // STEP 1
   var next = current.checkNeighbors()
 
@@ -101,9 +101,21 @@ function removeWalls(a, b) {
 }
 
 const highlightPath = (highlightStack, letters) => {
-  grid.forEach(square => {
-    if (highlightStack.includes(square) && square.morse === -1) {
-      square.morse = letters[Math.floor(Math.random() * letters.length)]
+  const lettersArray = letters.toUpperCase().split('')
+  const interval = Math.floor(highlightStack.length / letters.length)
+  let count = 0
+  highlightStack.forEach(square => {
+    const index = grid.indexOf(square)
+    if (index > -1) {
+      grid[index].path = true
+      if (grid[index].letter === -1 && count % interval == 0) {
+        grid[index].letter =
+          letters[count / interval] && letters[count / interval].toUpperCase()
+        grid[index].nextLetter =
+          letters[count / interval + 1] &&
+          letters[count / interval + 1].toUpperCase()
+      }
+      count += 1
     }
   })
 }
