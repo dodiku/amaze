@@ -14,8 +14,8 @@
 
 const letters = ['E', 'I']
 
-const numberOfRows = 8
-const canvasSize = 400 // in pixels
+const numberOfRows = 5
+const canvasSize = 280 // in pixels
 const w = Math.floor(canvasSize / numberOfRows) - canvasSize / 100 // cell size
 
 let cols, rows
@@ -25,7 +25,8 @@ let stack = []
 let stackArchive = []
 
 function setup() {
-  createCanvas(canvasSize, canvasSize)
+  let canvas = createCanvas(canvasSize, canvasSize)
+  canvas.parent('canvas_container')
   cols = floor(width / w)
   rows = floor(height / w)
   // frameRate(5);
