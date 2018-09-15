@@ -11,6 +11,8 @@ function keyTyped() {
           stackArchivePosition += 1;
           // window.setTimeout(showHint(), 3000);
         }
+      } else {
+          //finished
       }
     }
 }
