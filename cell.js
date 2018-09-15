@@ -56,8 +56,9 @@ function Cell(i, j) {
   }
 
   this.show = function() {
-    var x = this.i * w
-    var y = this.j * w
+    const x = this.i * w
+    const y = this.j * w
+    const padding = 4
     stroke(0)
     if (this.walls[0]) {
       line(x, y, x + w, y)
@@ -74,12 +75,27 @@ function Cell(i, j) {
 
     if (this.morse != -1) {
       noStroke()
-      fill(255, 0, 255, 50)
-      rect(x, y, w, w)
+      fill(255, 0, 255, 100)
+      rect(
+        x + padding,
+        y + padding,
+        w - padding * 2,
+        w - padding * 2,
+        padding * 5
+      )
+      fill(0, 0, 0)
+      textSize(14)
+      text(this.morse, x + w / 2 - padding, y + w / 2 + padding)
     } else if (this.visited) {
       noStroke()
-      fill(255, 0, 255, 100)
-      rect(x, y, w, w)
+      fill(255, 0, 255, 20)
+      rect(
+        x + padding,
+        y + padding,
+        w - padding * 2,
+        w - padding * 2,
+        padding * 5
+      )
     }
   }
 }

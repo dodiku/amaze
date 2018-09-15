@@ -99,7 +99,7 @@ function removeWalls(a, b) {
 
 const highlightPath = (highlightStach, letters) => {
   grid.forEach(square => {
-    if (highlightStach.includes(square)) {
+    if (highlightStach.includes(square) && square.morse === -1) {
       square.morse = letters[Math.floor(Math.random() * letters.length)]
     }
   })
