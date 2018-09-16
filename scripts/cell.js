@@ -20,6 +20,7 @@ function Cell(i, j) {
   this.path = false
   this.letter = -1
   this.solved = false
+  this.guessCount = 0
 
   this.checkNeighbors = function() {
     var neighbors = []

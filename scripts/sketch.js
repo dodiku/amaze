@@ -12,19 +12,19 @@
 // Recursive backtracker
 // https://en.wikipedia.org/wiki/Maze_generation_algorithm
 
-const level = 1
-const letters = levelWords[level]
 const numberOfRows = 5
 const canvasSize = 280 // in pixels
 const w = Math.floor(canvasSize / numberOfRows) - canvasSize / 100 // cell size
 
 let cols, rows
 let current
-let grid = []
+let grid
 let stack = []
 let stackArchive = []
+let level = 0
+let letters
 
-let fr = 60
+let fr
 
 function setup() {
   let canvas = createCanvas(canvasSize, canvasSize)
@@ -32,15 +32,27 @@ function setup() {
   cols = floor(width / w)
   rows = floor(height / w)
 
-  for (var j = 0; j < rows; j++) {
-    for (var i = 0; i < cols; i++) {
-      var cell = new Cell(i, j)
-      grid.push(cell)
+ createNewGame()
+}
+
+function createNewGame() {
+  fr = 60;
+  grid = []
+  level +=1
+  if (level <= Object.keys(levelWords).length) {
+    for (var j = 0; j < rows; j++) {
+      for (var i = 0; i < cols; i++) {
+        var cell = new Cell(i, j)
+        grid.push(cell)
+      }
     }
+    current = grid[0]
+    hintTimeOut && clearTimeout(hintTimeOut)
+    hintTimeOut = setTimeout(showHint, 5000)
   }
-  current = grid[0]
-  hintTimeOut && clearTimeout(hintTimeOut)
-  hintTimeOut = setTimeout(showHint, 5000)
+  else {
+    //Game Completed
+  }
 }
 
 function draw() {
@@ -72,13 +84,17 @@ function draw() {
       stackArchive.length <= stack.length ? stack.slice() : stackArchive
     current = stack.pop()
   } else {
+    letters = levelWords[level]
     highlightPath(stackArchive, letters)
     if (stackArchive.indexOf(current) !== stackArchiveNextPosition) {
-      fr = 5
-      stackArchive[stackArchive.indexOf(current)].solved = true
-      current = stackArchive[stackArchive.indexOf(current) + 1]
+      fr = 8
+      if (stackArchive[stackArchive.indexOf(current)]) {
+        stackArchive[stackArchive.indexOf(current)].solved = true
+        current = stackArchive[stackArchive.indexOf(current) + 1]
         ? stackArchive[stackArchive.indexOf(current) + 1]
         : current
+      }
+
     }
   }
 }

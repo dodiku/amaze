@@ -25,27 +25,54 @@ function showHint() {
   if (current.letter) {
     elt.innerHTML = ''
     let letter = current.letter
-    elt.innerHTML = letter
-    elt.innerHTML += englishToMorse[letter.toLowerCase()]
+    if (typeof(letter) === 'string') {
+      elt.innerHTML = letter
+      elt.innerHTML += englishToMorse[letter.toLowerCase()]
+    } else {
+      clearTimeout(hintTimeOut)
+      setTimeout(showHint, 5000)
+    }
   }
+}
+
+function clearHint() {
+  let elt = document.getElementById('morse')
+  elt.innerHTML = ''
 }
 
 function keyTyped() {
   hintTimeOut && clearTimeout(hintTimeOut)
   hintTimeOut = setTimeout(showHint, 5000)
+  let next = stackArchive[stackArchiveNextPosition]
   if (key && !levelCompleted) {
     if (
       key.toLowerCase() ===
-      stackArchive[stackArchiveNextPosition].letter.toLowerCase()
+      next.letter.toLowerCase()
     ) {
+      clearHint()
       current = stackArchive[stackArchiveNextPosition]
       stackArchivePosition = stackArchiveNextPosition
       stackArchiveNextPosition = getNextLetterPosition(
         stackArchive,
         stackArchivePosition
       )
-    } else {
+      if (levelCompleted) {
+        setTimeout(finished, 2000)
+      }
+    } else  {
+      next.guessCount += 1
+      if (next.guessCount >= 3) {
+        showHint()
+      }
       console.log('type -->', stackArchive[stackArchiveNextPosition].letter)
     }
   }
 }
+
+function finished() {
+  createNewGame()
+  levelCompleted = false
+  stackArchivePosition = 0
+  stackArchiveNextPosition = 1
+}
+
