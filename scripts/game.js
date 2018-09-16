@@ -4,6 +4,7 @@ let stackArchiveNextPosition = 1
 
 let hintTimeOut
 const hintDefaultTimer = 1000
+let score = 0
 
 const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
   while (true) {
@@ -71,6 +72,11 @@ function clearHint() {
   let elt = document.getElementById('morse')
   elt.innerHTML = ''
 }
+function getScore(letter) {
+  score += alphabet[letter].points * level
+  let scoreEle = document.getElementById('score')
+  scoreEle.innerHTML = score
+}
 
 function keyTyped() {
   hintTimeOut && clearTimeout(hintTimeOut)
@@ -79,6 +85,7 @@ function keyTyped() {
   if (key && !levelCompleted) {
     if (key.toLowerCase() === next.letter.toLowerCase()) {
       clearHint()
+      getScore(next.letter.toLowerCase());
       current = stackArchive[stackArchiveNextPosition]
       stackArchivePosition = stackArchiveNextPosition
       stackArchiveNextPosition = getNextLetterPosition(
