@@ -10,15 +10,24 @@
 </head>
 
 <body>
-  <!-- <p>1
-    <input id="input" type='text' autofocus>
-  </p> -->
-  <p>2
-    <input autofocus id="input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  </p>
+  <script>
+    // showing the keyboard
+    function captionShowKb() {
+      var input = document.getElementById('input_box');
+      input.focus()
+      document.getElementById('button_div').remove()
+    }
+    window.onload = function () {
+      document.getElementById("button_div").addEventListener("click", captionShowKb);
+    }
+
+
+  </script>
+
+  <!-- <script>document.getElementById("input").click()</script> -->
 
   <div class='container'>
-    <h1>Mr. Lost's Morse Maze - v8</h1>
+    <h1>Mr. Lost's Morse Maze</h1>
     <h2 id="level"></h2>
     <div id='canvas_container'></div>
     <div id='morse'>
@@ -33,6 +42,12 @@
       <div class="centered" id="score"></div>
     </div>
   </div>
+  <div id='button_div'>
+    <h1 class='splash_title'>Hello, Emmette!</h1>
+    <div id='lets_start'>Let's Start!</div>
+    <!-- <input id='keyboard_button' type="submit" value="Show Keyboard" onclick="captionShowKb()"> -->
+  </div>
+  <input id="input_box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
   <script type="text/javascript" src="scripts/p5.min.js"></script>
   <script type="text/javascript" src="scripts/levels.js"></script>
   <script type="text/javascript" src="scripts/morse-dictionary.js"></script>
