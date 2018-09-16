@@ -74,5 +74,6 @@ function finished() {
   levelCompleted = false
   stackArchivePosition = 0
   stackArchiveNextPosition = 1
+  stackArchive = []
 }
 
