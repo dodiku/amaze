@@ -10,6 +10,7 @@ body {
   padding: 0;
   background: linear-gradient(-31deg, #98ffff, #3939ff);
   height: 100vh;
+  font-size: 1.2em;
 }
 
 canvas {

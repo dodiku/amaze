@@ -24,6 +24,9 @@ const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
 // currently a dummy function to display hints until we can get information from the next tile again
 function showHint() {
   let elt = document.getElementById('hint')
+    ? document.getElementById('hint')
+    : document.createElement('div')
+  elt.id = 'hint'
   if (current.letter) {
     elt.innerHTML = ''
     let letter = current.letter

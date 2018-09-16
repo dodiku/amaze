@@ -36,47 +36,69 @@ function setup() {
 }
 
 function updateInstructions() {
-  // the main instructions div
-  let mostBox = document.getElementById('morse')
+  if (current.letter != -1) {
+    // the main instructions div
+    let mostBox = document.getElementById('morse')
 
-  // adding call to action
-  let callToAction = document.getElementById('call_to_action')
-    ? document.getElementById('call_to_action')
-    : mostBox.appendChild(
-        document.createElement('call_to_action'),
-        document.getElementById('call_to_action')
-      )
-  callToAction.innerHTML = ''
-  callToAction.innerHTML = 'Help Mr. Lost find his ?? item ??'
+    // cleaning...
+    mostBox.innerHTML = ''
 
-  // adding letter instructions
-  let morseText = document.getElementById('morse_text')
-    ? document.getElementById('morse_text')
-    : mostBox.appendChild(
-        document.createElement('morse_text'),
-        document.getElementById('morse_text')
-      )
+    if (levelCompleted) {
+      let morseText = document.getElementById('morse_text')
+        ? document.getElementById('morse_text')
+        : mostBox.appendChild(
+            document.createElement('morse_text'),
+            document.getElementById('morse_text')
+          )
+      let morseLetter = '🎉'
+      let parag = document.createElement('p')
+      parag.id = 'letter'
+      parag.innerHTML = morseLetter
+      let space = document.createElement('p')
+      space.innerHTML = ' '
+      morseText.appendChild(space)
+      morseText.appendChild(parag)
+      return
+    }
 
-  let span = document.createElement('span')
-  span.id = 'type'
-  span.innerHTML = 'Morse the letter'
-  morseText.appendChild(span)
-  morseText.appendChild(document.createElement('br'))
+    // adding call to action
+    let callToAction = document.getElementById('call_to_action')
+      ? document.getElementById('call_to_action')
+      : mostBox.appendChild(
+          document.createElement('call_to_action'),
+          document.getElementById('call_to_action')
+        )
+    callToAction.innerHTML = ''
+    callToAction.innerHTML = 'Help Mr. Lost find his ' + levels[level].itemName
+    callToAction.appendChild(document.createElement('br'))
 
-  let morseLetter = current.letter
-  let parag = document.createElement('p')
-  parag.id = 'letter'
-  parag.innerHTML = morseLetter
-  morseText.appendChild(parag)
+    // adding letter instructions
+    let morseText = document.getElementById('morse_text')
+      ? document.getElementById('morse_text')
+      : mostBox.appendChild(
+          document.createElement('morse_text'),
+          document.getElementById('morse_text')
+        )
 
-  console.log('====>')
+    let span = document.createElement('span')
+    span.id = 'type'
+    span.innerHTML = 'Morse the letter'
+    morseText.appendChild(span)
+    morseText.appendChild(document.createElement('br'))
+
+    let morseLetter = current.letter
+    let parag = document.createElement('p')
+    parag.id = 'letter'
+    parag.innerHTML = morseLetter
+    morseText.appendChild(parag)
+  }
 }
 
 function createNewGame() {
   fr = 60
   grid = []
   level += 1
-  if (level <= Object.keys(levelWords).length) {
+  if (level <= Object.keys(levels).length) {
     for (var j = 0; j < rows; j++) {
       for (var i = 0; i < cols; i++) {
         var cell = new Cell(i, j)
@@ -120,7 +142,7 @@ function draw() {
       stackArchive.length <= stack.length ? stack.slice() : stackArchive
     current = stack.pop()
   } else {
-    letters = levelWords[level]
+    letters = levels[level].words
     highlightPath(stackArchive, letters)
     if (stackArchive.indexOf(current) !== stackArchiveNextPosition) {
       fr = 8
