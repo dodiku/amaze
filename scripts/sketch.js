@@ -23,6 +23,7 @@ let stack = []
 let stackArchive = []
 let level = 0
 let letters
+let mrLost
 
 let fr
 
@@ -35,7 +36,10 @@ function setup() {
   createNewGame()
 
   // loading an image
-  img = loadImage(levels[1].itemUrl)
+  // mrLost = loadImage(levels[1].itemUrl)
+  mrLost = loadImage(
+    'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=animal-animal-photography-cat-104827.jpg'
+  )
 }
 
 function updateInstructions() {
@@ -131,10 +135,12 @@ function createNewGame() {
 }
 
 function draw() {
+  background(255)
+
   levelEl = document.getElementById('level')
   levelEl.innerText = 'Level ' + level
   frameRate(fr)
-  background(255)
+
   for (var i = 0; i < grid.length; i++) {
     grid[i].show()
   }
@@ -163,6 +169,13 @@ function draw() {
   } else {
     letters = levels[level].words
     highlightPath(stackArchive, letters)
+    image(
+      mrLost,
+      stackArchive[stackArchive.length - 1].i * w + 10,
+      stackArchive[stackArchive.length - 1].j * w + 10,
+      w - 10,
+      w - 10
+    )
     if (stackArchive.indexOf(current) !== stackArchiveNextPosition) {
       fr = 8
       if (stackArchive[stackArchive.indexOf(current)]) {
