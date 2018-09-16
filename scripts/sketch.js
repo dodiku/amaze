@@ -35,18 +35,10 @@ function setup() {
 
   createNewGame()
 
-  // loading an image
-  // mrLost = loadImage(levels[1].itemUrl)
-  // mrLost = loadImage(
-  //   'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=animal-animal-photography-cat-104827.jpg'
-  // )
   mrLost = loadImage(
     './assets/images/mrlost-pngsequences/Mr.Lost_RightSide/Mr.Lost_RightSide_00003.png'
   )
-  mrLostItem = loadImage(levels[level].itemUrl)
-  // mrLostItem = loadImage(
-  //   'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=animal-animal-photography-cat-104827.jpg'
-  // )
+
 }
 
 function updateInstructions() {
@@ -133,6 +125,7 @@ function createNewGame() {
       grid.push(cell)
     }
   }
+  mrLostItem = loadImage(levels[level].itemUrl)
   current = grid[0]
   hintTimeOut && clearTimeout(hintTimeOut)
   hintTimeOut = setTimeout(showHint, hintDefaultTimer)
