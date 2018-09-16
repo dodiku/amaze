@@ -27,7 +27,6 @@ let letters
 let fr
 
 function setup() {
-  document.getElementById('input').click()
   let canvas = createCanvas(canvasSize, canvasSize)
   canvas.parent('canvas_container')
   cols = floor(width / w)
