@@ -39,7 +39,7 @@ function createNewGame() {
   fr = 60;
   grid = []
   level +=1
-  if (level <= Object.keys(levelWords).length) {
+  if (level <= Object.keys(levels).length) {
     for (var j = 0; j < rows; j++) {
       for (var i = 0; i < cols; i++) {
         var cell = new Cell(i, j)
@@ -84,7 +84,7 @@ function draw() {
       stackArchive.length <= stack.length ? stack.slice() : stackArchive
     current = stack.pop()
   } else {
-    letters = levelWords[level]
+    letters = levels[level].words
     highlightPath(stackArchive, letters)
     if (stackArchive.indexOf(current) !== stackArchiveNextPosition) {
       fr = 8
