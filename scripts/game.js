@@ -3,7 +3,6 @@ let stackArchivePosition = 0
 let stackArchiveNextPosition = 1
 let score = 0
 
-
 let hintTimeOut
 const hintDefaultTimer = 1000
 
@@ -82,13 +81,17 @@ function clearHint() {
 }
 
 function keyTyped() {
+  inputKey = document.getElementById('input_box').value.split('')[
+    document.getElementById('input_box').value.length - 1
+  ]
+
   hintTimeOut && clearTimeout(hintTimeOut)
   hintTimeOut = setTimeout(showHint, hintDefaultTimer * level)
   let next = stackArchive[stackArchiveNextPosition]
-  if (key && !levelCompleted) {
-    if (key.toLowerCase() === next.letter.toLowerCase()) {
+  if (inputKey && !levelCompleted) {
+    if (inputKey.toLowerCase() === next.letter.toLowerCase()) {
       clearHint()
-      getScore(next.letter.toLowerCase());
+      getScore(next.letter.toLowerCase())
       current = stackArchive[stackArchiveNextPosition]
       stackArchivePosition = stackArchiveNextPosition
       stackArchiveNextPosition = getNextLetterPosition(
