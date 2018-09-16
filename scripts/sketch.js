@@ -43,7 +43,7 @@ function setup() {
   mrLost = loadImage(
     './assets/images/mrlost-pngsequences/Mr.Lost_RightSide/Mr.Lost_RightSide_00003.png'
   )
-  mrLostItem = loadImage(levels[1].itemUrl)
+  mrLostItem = loadImage(levels[level].itemUrl)
   // mrLostItem = loadImage(
   //   'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=animal-animal-photography-cat-104827.jpg'
   // )
