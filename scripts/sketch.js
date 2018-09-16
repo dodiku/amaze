@@ -33,6 +33,9 @@ function setup() {
   rows = floor(height / w)
 
   createNewGame()
+
+  // loading an image
+  img = loadImage(levels[1].itemUrl)
 }
 
 function updateInstructions() {
