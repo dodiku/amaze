@@ -20,7 +20,7 @@ canvas {
   padding-top: 1em;
 }
 
-.morse {
+#morse {
   /* background-color: darkgoldenrod; */
   height: 280px;
   width: 280px;

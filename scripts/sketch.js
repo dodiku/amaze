@@ -39,6 +39,8 @@ function setup() {
     }
   }
   current = grid[0]
+  hintTimeOut && clearTimeout(hintTimeOut)
+  hintTimeOut = setTimeout(showHint, 5000)
 }
 
 function draw() {
@@ -71,7 +73,6 @@ function draw() {
     current = stack.pop()
   } else {
     highlightPath(stackArchive, letters)
-    console.log(stackArchivePosition, stackArchiveNextPosition)
     if (stackArchive.indexOf(current) !== stackArchiveNextPosition) {
       fr = 5
       stackArchive[stackArchive.indexOf(current)].solved = true
