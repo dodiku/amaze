@@ -25,7 +25,7 @@ canvas {
 select,
 textarea,
 input {
-  left: -9999px;
+  /* left: -9999px; */
   position: absolute;
   pointer-events: none;
   z-index: -1;
