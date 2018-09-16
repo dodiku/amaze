@@ -1,6 +1,8 @@
 let levelCompleted = false
 let stackArchivePosition = 0
 let stackArchiveNextPosition = 1
+let score = 0
+
 
 let hintTimeOut
 const hintDefaultTimer = 1000
@@ -21,6 +23,13 @@ const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
     }
   }
 }
+
+function getScore(letter) {
+  score += alphabet[letter].points * level
+  let scoreEle = document.getElementById('score')
+  scoreEle.innerHTML = score
+}
+
 // currently a dummy function to display hints until we can get information from the next tile again
 function showHint() {
   let elt = document.getElementById('hint')
@@ -79,6 +88,7 @@ function keyTyped() {
   if (key && !levelCompleted) {
     if (key.toLowerCase() === next.letter.toLowerCase()) {
       clearHint()
+      getScore(next.letter.toLowerCase());
       current = stackArchive[stackArchiveNextPosition]
       stackArchivePosition = stackArchiveNextPosition
       stackArchiveNextPosition = getNextLetterPosition(
