@@ -107,23 +107,24 @@ function createNewGame() {
   fr = 60
   grid = []
   level += 1
-  if (level <= Object.keys(levels).length) {
-    for (var j = 0; j < rows; j++) {
-      for (var i = 0; i < cols; i++) {
-        var cell = new Cell(i, j)
-        grid.push(cell)
-      }
-    }
-    current = grid[0]
-    hintTimeOut && clearTimeout(hintTimeOut)
-    hintTimeOut = setTimeout(showHint, hintDefaultTimer)
-    let scoreEle = document.getElementById('score')
-    scoreEle.innerHTML = score
-    let imgEle = document.getElementById('scoreImg')
-    imgEle.src = 'assets/images/UI/scorerect.png'
-  } else {
-    //Game Completed
+  if (level > Object.keys(levels).length) {
+    //start the game over
+    level = 1
+    score = 0
   }
+  for (var j = 0; j < rows; j++) {
+    for (var i = 0; i < cols; i++) {
+      var cell = new Cell(i, j)
+      grid.push(cell)
+    }
+  }
+  current = grid[0]
+  hintTimeOut && clearTimeout(hintTimeOut)
+  hintTimeOut = setTimeout(showHint, hintDefaultTimer)
+  let scoreEle = document.getElementById('score')
+  scoreEle.innerHTML = score
+  let imgEle = document.getElementById('scoreImg')
+  imgEle.src = 'assets/images/UI/scorerect.png'
 }
 
 function draw() {
