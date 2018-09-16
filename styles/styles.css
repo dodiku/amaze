@@ -86,3 +86,28 @@ input {
   /* color: rgb(255, 204, 0); */
   color: black;
 }
+
+#container {
+  position: relative;
+  text-align: center;
+  font-size: 28px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding-left: 60px;
+  padding-bottom: 9px;
+  transform: translate(-50%, -50%);
+}
+
+#scoreTxt {
+  position: absolute;
+  /*z-index: 1*/
+  /*bottom: -50%;*/
+  /*right: -50%;*/
+  /*padding-left: 60px;*/
+  /*padding-bottom: 9px;*/
+  /*transform: translate(-50%, -50%);*/
+}
