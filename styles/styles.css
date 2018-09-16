@@ -24,12 +24,12 @@ canvas {
 
 select,
 textarea,
-input {
-  /* left: -9999px; */
-  /* position: absolute; */
+/* input {
+  left: -9999px;
+  position: absolute;
   pointer-events: none;
   z-index: -1;
-}
+} */
 
 #morse {
   /* background-color: darkgoldenrod; */
