@@ -44,20 +44,29 @@ function updateInstructions() {
     mostBox.innerHTML = ''
 
     if (levelCompleted) {
-      let morseText = document.getElementById('morse_text')
-        ? document.getElementById('morse_text')
-        : mostBox.appendChild(
-            document.createElement('morse_text'),
-            document.getElementById('morse_text')
-          )
-      let morseLetter = '🎉'
-      let parag = document.createElement('p')
-      parag.id = 'letter'
-      parag.innerHTML = morseLetter
-      let space = document.createElement('p')
-      space.innerHTML = ' '
-      morseText.appendChild(space)
-      morseText.appendChild(parag)
+      let victoryBox = document.getElementById('morse')
+      let scoreTxt = document.createElement('scoreTxt')
+      scoreTxt.id = 'scoreTxt'
+      scoreTxt.innerHTML = score
+      let img = document.createElement('img')
+      img.src = 'assets/images/UI/Victory Screen.png'
+      victoryBox.appendChild(img)
+      victoryBox.appendChild(scoreTxt)
+
+      // let morseText = document.getElementById('morse_text')
+      //   ? document.getElementById('morse_text')
+      //   : mostBox.appendChild(
+      //       document.createElement('morse_text'),
+      //       document.getElementById('morse_text')
+      //     )
+      // let morseLetter = '🎉'
+      // let parag = document.createElement('p')
+      // parag.id = 'letter'
+      // parag.innerHTML = morseLetter
+      // let space = document.createElement('p')
+      // space.innerHTML = ' '
+      // morseText.appendChild(space)
+      // morseText.appendChild(parag)
       return
     }
 
@@ -107,9 +116,11 @@ function createNewGame() {
     }
     current = grid[0]
     hintTimeOut && clearTimeout(hintTimeOut)
-    hintTimeOut = setTimeout(showHint, 5000)
+    hintTimeOut = setTimeout(showHint, hintDefaultTimer)
     let scoreEle = document.getElementById('score')
     scoreEle.innerHTML = score
+    let imgEle = document.getElementById('scoreImg')
+    imgEle.src = 'assets/images/UI/scorerect.png'
   } else {
     //Game Completed
   }

@@ -71,7 +71,7 @@ function showHint() {
       mostBox.appendChild(elt)
     } else {
       clearTimeout(hintTimeOut)
-      setTimeout(showHint, hintDefaultTimer * (level + 1))
+      setTimeout(showHint, hintDefaultTimer * level)
     }
   }
 }
@@ -83,7 +83,7 @@ function clearHint() {
 
 function keyTyped() {
   hintTimeOut && clearTimeout(hintTimeOut)
-  hintTimeOut = setTimeout(showHint, hintDefaultTimer * (level + 1))
+  hintTimeOut = setTimeout(showHint, hintDefaultTimer * level)
   let next = stackArchive[stackArchiveNextPosition]
   if (key && !levelCompleted) {
     if (key.toLowerCase() === next.letter.toLowerCase()) {
@@ -96,7 +96,7 @@ function keyTyped() {
         stackArchivePosition
       )
       if (levelCompleted) {
-        setTimeout(finished, 2000)
+        setTimeout(finished, 5000)
       }
     } else {
       next.guessCount += 1
