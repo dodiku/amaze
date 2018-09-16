@@ -45,13 +45,13 @@ function updateInstructions() {
 
     if (levelCompleted) {
       let victoryBox = document.getElementById('morse')
-      let scoreTxt = document.createElement('scoreTxt')
-      scoreTxt.id = 'scoreTxt'
-      scoreTxt.innerHTML = score
       let img = document.createElement('img')
-      img.src = 'assets/images/UI/Victory Screen.png'
+      img.src = 'assets/images/UI/victoryScreen.png'
       victoryBox.appendChild(img)
-      victoryBox.appendChild(scoreTxt)
+      // let scoreTxt = document.createElement('scoreTxt')
+      // scoreTxt.id = 'scoreTxt'
+      // scoreTxt.innerHTML = score
+      // victoryBox.appendChild(scoreTxt)
 
       // let morseText = document.getElementById('morse_text')
       //   ? document.getElementById('morse_text')
