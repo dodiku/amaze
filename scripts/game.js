@@ -3,7 +3,7 @@ let stackArchivePosition = 0
 let stackArchiveNextPosition = 1
 
 let hintTimeOut
-const hintDefaultTimer = 1000
+const hintDefaultTimer = 10000
 
 const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
   while (true) {
