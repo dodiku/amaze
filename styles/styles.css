@@ -158,3 +158,8 @@ textarea,
   right: -240px;
   top: 10vh;
 }
+
+#victory{
+  width: 101%;
+  height: 101%;
+}
