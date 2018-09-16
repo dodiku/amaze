@@ -111,7 +111,6 @@ function createNewGame() {
     //start the game over
     level = 1
     score = 0
-    hintDefaultTimer = 1000
   }
   for (var j = 0; j < rows; j++) {
     for (var i = 0; i < cols; i++) {
