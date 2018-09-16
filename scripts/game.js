@@ -1,43 +1,39 @@
-// var idleTime = 0;
+let levelCompleted = false
+let stackArchivePosition = 0
+let stackArchiveNextPosition = 1
 
-function keyTyped() {
-  if (key) {
-    // window.clearTimeout();
-    // startIdleTimer();
-    if (stackArchivePosition < stackArchive.length) {
-      let next = stackArchive[stackArchivePosition]
-      console.log('-->', next)
-      if (key.toLowerCase() === next.letter.toLowerCase()) {
-        current = grid[index(next.i, next.j)]
-        stackArchivePosition += 1
-        // window.setTimeout(showHint(), 3000);
-      }
+const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
+  while (true) {
+    stackArchivePosition += 1
+    if (
+      stackArchive[stackArchivePosition] === undefined ||
+      stackArchive[stackArchivePosition].letter === undefined
+    ) {
+      console.log('yay!!')
+      levelCompleted = true
+      return stackArchivePosition
+    } else if (stackArchive[stackArchivePosition].letter !== -1) {
+      return stackArchivePosition
     }
   }
 }
 
-// function showHint() {
-//     console.log('showHint');
-// }
-//
-// function startIdleTimer() {
-//         // $(document).ready(function () {
-//             //Increment the idle time counter every second.
-//         setInterval(timerIncrement(idleTime), 1000); // 1 second
-//
-//             //Zero the idle timer on any movement.
-//         if (key) {
-//             idleTime = 0;
-//         }
-//     // });
-// }
-//
-// function timerIncrement() {
-//     idleTime = idleTime + 1;
-//     console.log(idleTime);
-//     if (idleTime > 2) { // 1 minute
-//         //show hint
-//         console.log('show hint');
-//         idleTime = 0;
-//     }
-// }
+function keyTyped() {
+  if (key && !levelCompleted) {
+    if (
+      key.toLowerCase() ===
+      stackArchive[stackArchiveNextPosition].letter.toLowerCase()
+    ) {
+      current = stackArchive[stackArchiveNextPosition]
+      stackArchivePosition = stackArchiveNextPosition
+      stackArchiveNextPosition = getNextLetterPosition(
+        stackArchive,
+        stackArchivePosition
+      )
+      console.log(stackArchiveNextPosition)
+    } else {
+      console.log('stackArchivePosition -->', stackArchivePosition)
+      console.log('type -->', stackArchive[stackArchiveNextPosition].letter)
+    }
+  }
+}

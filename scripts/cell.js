@@ -19,7 +19,6 @@ function Cell(i, j) {
   this.visited = false
   this.path = false
   this.letter = -1
-  this.nextLetter = -1
   this.solved = false
 
   this.checkNeighbors = function() {
@@ -80,8 +79,25 @@ function Cell(i, j) {
     if (this.walls[3]) {
       line(x, y + w, x, y)
     }
-
-    if (this.path) {
+    if (this.solved) {
+      noStroke()
+      fill(150, 150, 255, 255)
+      rect(
+        x + padding * 2,
+        y + padding * 2,
+        w - padding * 4,
+        w - padding * 4,
+        padding * 5
+      )
+      textFont('Georgia')
+      fill(0, 0, 0)
+      textSize(14)
+      text(
+        this.letter != -1 ? this.letter : '',
+        x + w / 2 - padding,
+        y + w / 2 + padding
+      )
+    } else if (this.path) {
       noStroke()
       fill(250, 150, 243, 200)
       rect(

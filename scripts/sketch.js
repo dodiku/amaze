@@ -23,14 +23,14 @@ let current
 let grid = []
 let stack = []
 let stackArchive = []
-let stackArchivePosition = 1
+
+let fr = 60
 
 function setup() {
   let canvas = createCanvas(canvasSize, canvasSize)
   canvas.parent('canvas_container')
   cols = floor(width / w)
   rows = floor(height / w)
-  // frameRate(5);
 
   for (var j = 0; j < rows; j++) {
     for (var i = 0; i < cols; i++) {
@@ -42,6 +42,7 @@ function setup() {
 }
 
 function draw() {
+  frameRate(fr)
   background(255)
   for (var i = 0; i < grid.length; i++) {
     grid[i].show()
@@ -69,9 +70,15 @@ function draw() {
       stackArchive.length <= stack.length ? stack.slice() : stackArchive
     current = stack.pop()
   } else {
-    // changing the color of the
-    // stackArchive.push(current)
     highlightPath(stackArchive, letters)
+    console.log(stackArchivePosition, stackArchiveNextPosition)
+    if (stackArchive.indexOf(current) !== stackArchiveNextPosition) {
+      fr = 5
+      stackArchive[stackArchive.indexOf(current)].solved = true
+      current = stackArchive[stackArchive.indexOf(current) + 1]
+        ? stackArchive[stackArchive.indexOf(current) + 1]
+        : current
+    }
   }
 }
 
@@ -111,11 +118,13 @@ const highlightPath = (highlightStack, letters) => {
       if (grid[index].letter === -1 && count % interval == 0) {
         grid[index].letter =
           letters[count / interval] && letters[count / interval].toUpperCase()
-        grid[index].nextLetter =
-          letters[count / interval + 1] &&
-          letters[count / interval + 1].toUpperCase()
       }
       count += 1
     }
   })
+  !levelCompleted &&
+    (stackArchiveNextPosition = getNextLetterPosition(
+      stackArchive,
+      stackArchivePosition
+    ))
 }
