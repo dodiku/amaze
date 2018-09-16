@@ -15,20 +15,21 @@ function keyTyped() {
     }
   }
 }
-
+// currently a dummy function to display hints until we can get information from the next tile again
 function showHint(x) {
   var elt = document.getElementById('morse');
   // var div1 = createDiv('this is the child');
   // div1.id('moose');
   // elt.child(div1)
-
-  elt.innerHTML = x.morse.toLowerCase();
+  elt.innerHTML += 'x';
   for (let i in englishToMorse) {
-    if (i == x.morse.toLowerCase()) {
+    if (i == 'x') {
+      console.log('thing')
       elt.innerHTML += englishToMorse[i];
     }
   }
 }
+
 
 // const morseToEnglish = {
 //   '.-': 'a',
