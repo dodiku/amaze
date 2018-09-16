@@ -48,9 +48,11 @@ canvas {
 }
 
 #hint_img {
-  width: 50%;
-  margin-top: -3em;
+  width: 148px;
+  margin-top: -2em;
   margin: auto;
+  position: relative;
+  top: -50px;
 }
 
 #type {
@@ -61,4 +63,16 @@ canvas {
 #letter {
   font-size: 6em;
   margin: auto;
+  /* color: rgb(255, 204, 0); */
+  color: black;
+}
+
+#small_word {
+  position: relative;
+  top: -150px;
+}
+
+#small_word_highlight {
+  /* color: rgb(255, 204, 0); */
+  color: black;
 }

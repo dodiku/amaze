@@ -3,7 +3,7 @@ let stackArchivePosition = 0
 let stackArchiveNextPosition = 1
 
 let hintTimeOut
-const hintDefaultTimer = 10000
+const hintDefaultTimer = 1000
 
 const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
   while (true) {
@@ -28,16 +28,38 @@ function showHint() {
     : document.createElement('div')
   elt.id = 'hint'
   if (current.letter) {
-    elt.innerHTML = ''
+    // elt.innerHTML = ''
     let letter = current.letter
     if (typeof letter === 'string') {
       // elt.innerHTML = letter
       // elt.innerHTML += englishToMorse[letter.toLowerCase()]
       let img = document.createElement('img')
-      img.src = './assets/images/png/Archery.png'
+      img.src = alphabet[current.letter.toLowerCase()].imageUrl
       img.id = 'hint_img'
       elt.appendChild(img)
-      elt
+
+      // adding a small word
+
+      let p = document.createElement('p')
+      p.id = 'small_word'
+
+      let smallWordHighlight = document.createElement('span')
+      smallWordHighlight.innerHTML =
+        alphabet[current.letter.toLowerCase()].imageName[0]
+      smallWordHighlight.id = 'small_word_highlight'
+      p.appendChild(smallWordHighlight)
+
+      let smallWord = document.createElement('span')
+      smallWord.innerHTML = alphabet[
+        current.letter.toLowerCase()
+      ].imageName.slice(1)
+
+      p.appendChild(smallWord)
+
+      elt.appendChild(p)
+
+      let mostBox = document.getElementById('morse')
+      mostBox.appendChild(elt)
     } else {
       clearTimeout(hintTimeOut)
       setTimeout(showHint, hintDefaultTimer * (level + 1))
