@@ -27,6 +27,7 @@ let letters
 let fr
 
 function setup() {
+  document.getElementById('input').focus()
   let canvas = createCanvas(canvasSize, canvasSize)
   canvas.parent('canvas_container')
   cols = floor(width / w)
@@ -117,7 +118,7 @@ function createNewGame() {
 
 function draw() {
   levelEl = document.getElementById('level')
-  levelEl.innerText = "Level " + level
+  levelEl.innerText = 'Level ' + level
   frameRate(fr)
   background(255)
   for (var i = 0; i < grid.length; i++) {

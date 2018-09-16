@@ -22,6 +22,15 @@ canvas {
   padding-top: 1em;
 }
 
+select,
+textarea,
+input {
+  left: -9999px;
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
 #morse {
   /* background-color: darkgoldenrod; */
   height: 280px;
