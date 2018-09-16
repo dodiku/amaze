@@ -108,12 +108,16 @@ function createNewGame() {
     current = grid[0]
     hintTimeOut && clearTimeout(hintTimeOut)
     hintTimeOut = setTimeout(showHint, 5000)
+    let scoreEle = document.getElementById('score')
+    scoreEle.innerHTML = score
   } else {
     //Game Completed
   }
 }
 
 function draw() {
+  levelEl = document.getElementById('level')
+  levelEl.innerText = "Level " + level
   frameRate(fr)
   background(255)
   for (var i = 0; i < grid.length; i++) {
