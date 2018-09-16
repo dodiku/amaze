@@ -58,7 +58,7 @@ textarea,
 }
 
 #call_to_action {
-  font-size: 1.2em;
+  font-size: 1.4em;
   line-height: 1.6em;
   font-weight: bold;
 }
@@ -72,7 +72,7 @@ textarea,
 }
 
 #type {
-  font-size: 1.2em;
+  font-size: 1.4em;
   margin: auto;
 }
 
@@ -126,6 +126,7 @@ textarea,
   z-index: 100000;
   align-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 #lets_start {
@@ -141,6 +142,19 @@ textarea,
 }
 
 .splash_title {
-  margin-top: 4em;
+  margin-top: 30vh;
   font-size: 4em;
+}
+
+#di {
+  height: 220px;
+  position: absolute;
+  left: -140px;
+  top: 50vh;
+}
+#Dah {
+  width: 720px;
+  position: absolute;
+  right: -240px;
+  top: 10vh;
 }
