@@ -61,6 +61,7 @@ function updateInstructions() {
       let victoryBox = document.getElementById('morse')
       let img = document.createElement('img')
       img.src = 'assets/images/UI/victoryScreen.png'
+      img.id = 'victory'
       victoryBox.appendChild(img)
       // let scoreTxt = document.createElement('scoreTxt')
       // scoreTxt.id = 'scoreTxt'
