@@ -23,7 +23,7 @@ let stack = []
 let stackArchive = []
 let level = 0
 let letters
-let mrLost
+let mrLostItem
 
 let fr
 
@@ -37,9 +37,16 @@ function setup() {
 
   // loading an image
   // mrLost = loadImage(levels[1].itemUrl)
+  // mrLost = loadImage(
+  //   'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=animal-animal-photography-cat-104827.jpg'
+  // )
   mrLost = loadImage(
-    'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=animal-animal-photography-cat-104827.jpg'
+    './assets/images/mrlost-pngsequences/Mr.Lost_RightSide/Mr.Lost_RightSide_00003.png'
   )
+  mrLostItem = loadImage(levels[1].itemUrl)
+  // mrLostItem = loadImage(
+  //   'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?cs=srgb&dl=animal-animal-photography-cat-104827.jpg'
+  // )
 }
 
 function updateInstructions() {
@@ -170,7 +177,7 @@ function draw() {
     letters = levels[level].words
     highlightPath(stackArchive, letters)
     image(
-      mrLost,
+      mrLostItem,
       stackArchive[stackArchive.length - 1].i * w + 10,
       stackArchive[stackArchive.length - 1].j * w + 10,
       w - 10,

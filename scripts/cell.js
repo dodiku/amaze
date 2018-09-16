@@ -55,8 +55,9 @@ function Cell(i, j) {
     var y = this.j * w
     // noStroke()
     strokeWeight(10)
-    fill(0, 0, 255, 100)
-    rect(x, y, w, w)
+    image(mrLost, x + 10, y + 10, w - 10, w - 10)
+    // fill(0, 0, 255, 255)
+    // rect(x, y, w, w)
   }
 
   this.show = function() {
