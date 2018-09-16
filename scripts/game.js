@@ -1,7 +1,9 @@
 let levelCompleted = false
 let stackArchivePosition = 0
 let stackArchiveNextPosition = 1
+
 let hintTimeOut
+const hintDefaultTimer = 10000
 
 const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
   while (true) {
@@ -21,16 +23,21 @@ const getNextLetterPosition = (stackArchive, stackArchivePosition) => {
 }
 // currently a dummy function to display hints until we can get information from the next tile again
 function showHint() {
-  let elt = document.getElementById('morse')
+  let elt = document.getElementById('hint')
   if (current.letter) {
     elt.innerHTML = ''
     let letter = current.letter
-    if (typeof(letter) === 'string') {
-      elt.innerHTML = letter
-      elt.innerHTML += englishToMorse[letter.toLowerCase()]
+    if (typeof letter === 'string') {
+      // elt.innerHTML = letter
+      // elt.innerHTML += englishToMorse[letter.toLowerCase()]
+      let img = document.createElement('img')
+      img.src = './assets/images/png/Archery.png'
+      img.id = 'hint_img'
+      elt.appendChild(img)
+      elt
     } else {
       clearTimeout(hintTimeOut)
-      setTimeout(showHint, 5000)
+      setTimeout(showHint, hintDefaultTimer * (level + 1))
     }
   }
 }
@@ -42,13 +49,10 @@ function clearHint() {
 
 function keyTyped() {
   hintTimeOut && clearTimeout(hintTimeOut)
-  hintTimeOut = setTimeout(showHint, 5000)
+  hintTimeOut = setTimeout(showHint, hintDefaultTimer * (level + 1))
   let next = stackArchive[stackArchiveNextPosition]
   if (key && !levelCompleted) {
-    if (
-      key.toLowerCase() ===
-      next.letter.toLowerCase()
-    ) {
+    if (key.toLowerCase() === next.letter.toLowerCase()) {
       clearHint()
       current = stackArchive[stackArchiveNextPosition]
       stackArchivePosition = stackArchiveNextPosition
@@ -59,7 +63,7 @@ function keyTyped() {
       if (levelCompleted) {
         setTimeout(finished, 2000)
       }
-    } else  {
+    } else {
       next.guessCount += 1
       if (next.guessCount >= 3) {
         showHint()
@@ -76,4 +80,3 @@ function finished() {
   stackArchiveNextPosition = 1
   stackArchive = []
 }
-

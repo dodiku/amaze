@@ -32,13 +32,50 @@ function setup() {
   cols = floor(width / w)
   rows = floor(height / w)
 
- createNewGame()
+  createNewGame()
+}
+
+function updateInstructions() {
+  // the main instructions div
+  let mostBox = document.getElementById('morse')
+
+  // adding call to action
+  let callToAction = document.getElementById('call_to_action')
+    ? document.getElementById('call_to_action')
+    : mostBox.appendChild(
+        document.createElement('call_to_action'),
+        document.getElementById('call_to_action')
+      )
+  callToAction.innerHTML = ''
+  callToAction.innerHTML = 'Help Mr. Lost find his ?? item ??'
+
+  // adding letter instructions
+  let morseText = document.getElementById('morse_text')
+    ? document.getElementById('morse_text')
+    : mostBox.appendChild(
+        document.createElement('morse_text'),
+        document.getElementById('morse_text')
+      )
+
+  let span = document.createElement('span')
+  span.id = 'type'
+  span.innerHTML = 'Morse the letter'
+  morseText.appendChild(span)
+  morseText.appendChild(document.createElement('br'))
+
+  let morseLetter = current.letter
+  let parag = document.createElement('p')
+  parag.id = 'letter'
+  parag.innerHTML = morseLetter
+  morseText.appendChild(parag)
+
+  console.log('====>')
 }
 
 function createNewGame() {
-  fr = 60;
+  fr = 60
   grid = []
-  level +=1
+  level += 1
   if (level <= Object.keys(levelWords).length) {
     for (var j = 0; j < rows; j++) {
       for (var i = 0; i < cols; i++) {
@@ -49,8 +86,7 @@ function createNewGame() {
     current = grid[0]
     hintTimeOut && clearTimeout(hintTimeOut)
     hintTimeOut = setTimeout(showHint, 5000)
-  }
-  else {
+  } else {
     //Game Completed
   }
 }
@@ -91,10 +127,10 @@ function draw() {
       if (stackArchive[stackArchive.indexOf(current)]) {
         stackArchive[stackArchive.indexOf(current)].solved = true
         current = stackArchive[stackArchive.indexOf(current) + 1]
-        ? stackArchive[stackArchive.indexOf(current) + 1]
-        : current
+          ? stackArchive[stackArchive.indexOf(current) + 1]
+          : current
+        updateInstructions()
       }
-
     }
   }
 }

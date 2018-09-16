@@ -63,7 +63,8 @@ function Cell(i, j) {
     const padding = 4
     const x = this.i * w + padding
     const y = this.j * w + padding
-    stroke(0)
+    stroke(255, 204, 0)
+
     // top
     if (this.walls[0]) {
       line(x, y, x + w, y)
@@ -90,9 +91,9 @@ function Cell(i, j) {
         w - padding * 4,
         padding * 5
       )
-      textFont('Georgia')
+      textFont('Gamja Flower')
       fill(0, 0, 0)
-      textSize(14)
+      textSize(24)
       text(
         this.letter != -1 ? this.letter : '',
         x + w / 2 - padding,
@@ -108,13 +109,13 @@ function Cell(i, j) {
         w - padding * 4,
         padding * 5
       )
-      textFont('Georgia')
+      textFont('Gamja Flower')
       fill(0, 0, 0)
-      textSize(14)
+      textSize(24)
       text(
         this.letter != -1 ? this.letter : '',
         x + w / 2 - padding,
-        y + w / 2 + padding
+        y + w / 2 + padding * 2
       )
     } else if (this.visited) {
       noStroke()
